@@ -6,7 +6,7 @@ COPY conf/ /conf
 COPY entrypoint.sh /entrypoint.sh
 
 ARG DEBIAN_FRONTEND=noninteractive
-RUN --cap-add=SYS_ADMIN
+RUN --privileged
 RUN set -ex\
     && apt update -y \
     && apt install -y wget qrencode shadowsocks-libev nginx-light jq \
