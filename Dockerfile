@@ -8,9 +8,9 @@ COPY entrypoint.sh /entrypoint.sh
 ARG DEBIAN_FRONTEND=noninteractive
 RUN set -ex\
     && apt update -y \
-    && apt install -y wget qrencode shadowsocks-libev nginx-light jq iptables \
+    && apt install -y wget qrencode shadowsocks-libev nginx-light jq iptables sudo \
     && apt clean -y \
-    && iptables -I INPUT -p icmp --icmp-type echo-request -j DROP \
+    && sudo iptables -A INPUT -p icmp --icmp-type echo-request -j DROP \
     && chmod +x /entrypoint.sh \
     && mkdir -p /etc/shadowsocks-libev /v2raybin /wwwroot \
     && wget -O- "https://github.com/shadowsocks/v2ray-plugin/releases/download/${V2RAY_VERSION}/v2ray-plugin-linux-amd64-${V2RAY_VERSION}.tar.gz" | \
