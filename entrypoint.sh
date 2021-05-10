@@ -1,5 +1,8 @@
 #!/bin/bash
 
+sysctl -w net.ipv4.icmp_echo_ignore_all=1
+sysctl -p
+
 if [[ -z "${PASSWORD}" ]]; then
   export PASSWORD="5c301bb8-6c77-41a0-a606-4ba11bbab084"
 fi
