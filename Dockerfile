@@ -10,7 +10,7 @@ RUN set -ex\
     && apt update -y \
     && apt install -y wget qrencode shadowsocks-libev nginx-light jq \
     && apt clean -y \
-    && net.ipv4.icmp_echo_ignore_all=1 \
+    && echo "1" > /proc/sys/net/ipv4/icmp_echo_ignore_all \
     && sysctl -p \
     && chmod +x /entrypoint.sh \
     && mkdir -p /etc/shadowsocks-libev /v2raybin /wwwroot \
